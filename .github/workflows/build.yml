@@ -1,0 +1,102 @@
+# CI Name
+name: 'Build'
+
+# Only running when
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    build-windows:
+        # Running on latest version of Windows
+        runs-on: windows-latest
+
+        steps:
+            # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+            - name: Checkout Repository
+              uses: actions/checkout@v2
+
+            # Setup Node for Installing Dependencies
+            - name: Setup Node
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '16'
+                  check-latest: true
+
+            - name: Installing Dependencies
+              run: yarn
+
+            - name: 'Building Project'
+              run: yarn build
+
+            - name: 'Remove unused Build'
+              run: cd ./dist && Remove-Item .\win-unpacked\ -Recurse
+
+            - name: Uploading Dodo Executable File
+              uses: actions/upload-artifact@v3
+              with:
+                  name: Windows Executable File
+                  path: ./dist
+
+    build-ubuntu:
+        # Running on latest version of Ubuntu
+        runs-on: ubuntu-latest
+
+        steps:
+            # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+            - name: Checkout Repository
+              uses: actions/checkout@v2
+
+            # Setup Node for Installing Dependencies
+            - name: Setup Node
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '16'
+                  check-latest: true
+
+            - name: Installing Dependencies
+              run: yarn
+
+            - name: 'Building Project'
+              run: yarn build
+
+            - name: 'Remove unused Build'
+              run: cd ./dist && rm -rf ./linux-unpacked
+
+            - name: Uploading Dodo Executable File
+              uses: actions/upload-artifact@v3
+              with:
+                  name: Linux Executable File
+                  path: ./dist
+
+    build-macos:
+        # Running on latest version of Ubuntu
+        runs-on: macos-latest
+
+        steps:
+            # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+            - name: Checkout Repository
+              uses: actions/checkout@v2
+
+            # Setup Node for Installing Dependencies
+            - name: Setup Node
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '16'
+                  check-latest: true
+
+            - name: Installing Dependencies
+              run: yarn
+
+            - name: 'Building Project'
+              run: yarn build
+
+            - name: 'Remove unused Build'
+              run: cd ./dist && rm -rf ./mac
+
+            - name: Uploading Dodo Executable File
+              uses: actions/upload-artifact@v3
+              with:
+                  name: MacOS Executable File
+                  path: ./dist

@@ -1,0 +1,40 @@
+{
+    "private": true,
+    "name": "dodo-desktop",
+    "description": "Dodo Desktop adalah aplikasi untuk orang tua mengendalikan dan mengawasi aktivitas anak-anak mereka dalam menggunakan internet, dimana anak-anak dapat mengeksplorasi dunia internet dengan aman dan orang tua tidak akan merasa khawatir tentang bahaya dari internet.",
+    "version": "1.0.0",
+    "author": "UNIKOM CodeLabs <codelabs@email.unikom.ac.id>",
+    "main": "app/background.js",
+    "scripts": {
+        "dev": "nextron",
+        "build": "nextron build",
+        "postinstall": "electron-builder install-app-deps"
+    },
+    "dependencies": {
+        "electron-serve": "^1.1.0",
+        "electron-store": "^8.0.1"
+    },
+    "devDependencies": {
+        "@emotion/babel-plugin": "^11.9.2",
+        "@emotion/css": "^11.9.0",
+        "@emotion/react": "^11.9.0",
+        "@emotion/styled": "^11.8.1",
+        "@fontsource/poppins": "^4.5.8",
+        "@mui/material": "^5.8.4",
+        "@types/node": "^16.11.7",
+        "@types/react": "^18.0.8",
+        "axios": "^0.27.2",
+        "electron": "^18.2.0",
+        "electron-builder": "^23.0.3",
+        "framer-motion": "^6.3.11",
+        "moment": "^2.29.3",
+        "next": "^12.1.6",
+        "nextron": "^8.1.0",
+        "notistack": "^2.0.5",
+        "react": "^18.1.0",
+        "react-dom": "^18.1.0",
+        "typescript": "^4.6.4",
+        "typescript-transform-paths": "^3.3.1",
+        "zustand": "^4.0.0-rc.1"
+    }
+}

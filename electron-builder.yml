@@ -1,0 +1,12 @@
+appId: com.example.dodo
+productName: Dodo Desktop
+copyright: Copyright © 2022 UNIKOM CodeLabs
+directories:
+    output: dist
+    buildResources: resources
+files:
+    - from: .
+      filter:
+          - package.json
+          - app
+publish: null
